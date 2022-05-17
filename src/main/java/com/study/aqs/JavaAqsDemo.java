@@ -1,4 +1,4 @@
-package com.study;
+package com.study.aqs;
 
 import java.util.concurrent.TimeUnit;
 import java.util.concurrent.locks.Lock;
