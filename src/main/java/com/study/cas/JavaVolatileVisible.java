@@ -6,7 +6,10 @@ class JavaVolatileVisible {
 
     static class MyData {
 
-        private int number = 0;
+        /**
+         * 如果不添加 volatile 那么 main 线程不会被同步 , 因为main不会被同步
+         * */
+        private volatile int number = 0;
 
         public void addNumber() {
             this.number = 60;
