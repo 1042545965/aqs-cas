@@ -2,12 +2,15 @@ package com.study.cas;
 
 import java.util.concurrent.TimeUnit;
 
+/**
+ * Volatile 的可见性
+ */
 class JavaVolatileVisible {
 
     static class MyData {
 
         /**
-         * 如果不添加 volatile 那么 main 线程不会被同步 , 因为main不会被同步
+         * 如果不添加 volatile 那么 main 线程不会被同步 , 因为main不会被同步 所以 while 会进入死循环
          * */
         private volatile int number = 0;
 
