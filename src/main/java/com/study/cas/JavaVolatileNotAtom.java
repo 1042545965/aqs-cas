@@ -1,5 +1,7 @@
 package com.study.cas;
 
+import java.util.concurrent.atomic.AtomicInteger;
+
 /**
  * Volatile 不保证原则性
  */
@@ -23,6 +25,12 @@ class JavaVolatileNotAtom {
         public synchronized void addPushPush() {
             this.number++;
         }
+
+
+        AtomicInteger atomicInteger = new AtomicInteger();
+        public void atomicIntegerAdd() {
+            atomicInteger.getAndIncrement();
+        }
     }
 
     public static void main(String[] args) {
@@ -30,7 +38,7 @@ class JavaVolatileNotAtom {
         for (int i = 0; i < 20; i++) {
             new Thread(() -> {
                 for (int j = 0; j < 1000; j++) {
-                    myData.addPushPush();
+                    myData.atomicIntegerAdd();
                 }
             }, String.valueOf(i)).start();
         }
@@ -39,7 +47,7 @@ class JavaVolatileNotAtom {
             Thread.yield();
         }
         // 按理来说是 20 * 1000 = 20000 但是如果不添加 synchronized 就不会是 20000
-        System.out.println(Thread.currentThread().getName() + " : " + myData.number);
+        System.out.println(Thread.currentThread().getName() + " : " + myData.atomicInteger);
 
     }
 }
