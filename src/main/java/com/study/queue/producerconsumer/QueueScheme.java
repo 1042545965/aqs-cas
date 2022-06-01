@@ -52,7 +52,6 @@ class QueueShareData {
                 return;
             }
         }
-        System.out.println("生产停止");
     }
 
     public void stop(){
