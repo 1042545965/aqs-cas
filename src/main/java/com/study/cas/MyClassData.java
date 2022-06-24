@@ -1,10 +1,12 @@
 package com.study.cas;
 
+import java.util.concurrent.locks.ReentrantLock;
+
 class MyClassData {
 
-    private volatile int number = 0;
 
-    public synchronized void addPushPush() {
-        this.number++;
+
+    public static void main(String[] args) {
+        System.out.println(Runtime.getRuntime().availableProcessors());
     }
 }
